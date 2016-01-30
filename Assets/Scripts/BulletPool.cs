@@ -6,11 +6,13 @@ public class BulletPool : MonoBehaviour {
 
 	public int amount = 100;
 	public string type = "Pickles";
-	List<IBullet> pool = new List<IBullet>();
+	Stack<IBullet> pool = new Stack<IBullet>();
 
 	// Use this for initialization
 	public void Start () {
-	
+		for (int i = 0; i < amount; i++) {
+			pool.Push(new IBullet());
+		}
 	}
 	
 	// Update is called once per frame
@@ -19,16 +21,15 @@ public class BulletPool : MonoBehaviour {
 	}
 
 	public void GetBullet(float x, float z, Quaternion heading) {
-		if (amount < 1)
-			return;
 
-		IBullet newBullet = new IBullet ();
+		pool.Pop().initialize (x, z, heading, this);
 		amount--;
-		pool.Add(newBullet.initialize (x, z, heading, this));
+
 	}
 
 	public void ReleaseBullet(IBullet bullet) {
-		pool.Remove (bullet);
+		bullet.gameObject.SetActive (false);
+		pool.Push (bullet);
 		amount++;
 	}
 }
