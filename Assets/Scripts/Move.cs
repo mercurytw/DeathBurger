@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Move : MonoBehaviour
@@ -15,7 +16,6 @@ public class Move : MonoBehaviour
         Debug.Assert(phys_obj);
 	}
 
-    
 	// Update is called once per frame
 	void Update ()
     {
@@ -23,6 +23,12 @@ public class Move : MonoBehaviour
         float side = Input.GetAxis("Horizontal") * sideSpeed;
         move_velocity.Set(side, 0.0f, up);
         phys_obj.velocity = move_velocity;
+    }
+
+    void OnCollisionEnter(Collision col) {
+        if (col.gameObject.tag == "Enemy") {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 }
