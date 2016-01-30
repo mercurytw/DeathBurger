@@ -17,14 +17,15 @@ public class BulletPool : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Update () {
-	
+
 	}
 
-	public void GetBullet(float x, float z, Quaternion heading) {
+	public IBullet GetBullet(float x, float z, Quaternion heading) {
 
-		pool.Pop().initialize (x, z, heading, this);
+		if (amount < 1)
+			return null;
 		amount--;
-
+		return pool.Pop().initialize (x, z, heading, this);
 	}
 
 	public void ReleaseBullet(IBullet bullet) {

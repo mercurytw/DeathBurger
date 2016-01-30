@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Move : MonoBehaviour
@@ -27,7 +27,7 @@ public class Move : MonoBehaviour
 
     void OnCollisionEnter(Collision col) {
         if (col.gameObject.tag == "Enemy") {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

@@ -12,11 +12,12 @@ public class IBullet : MonoBehaviour {
 	Quaternion heading;
 
 	// Use this for initialization
-	public void initialize(float nx, float nz, Quaternion nheading, BulletPool pool) {
+	public IBullet initialize(float nx, float nz, Quaternion nheading, BulletPool pool) {
 		x = nx;
 		z = nz;
 		heading = nheading;
 		bPool = pool;
+		return this;
 	}
 	
 	// Update is called once per frame
