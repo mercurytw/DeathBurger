@@ -34,17 +34,12 @@ public class Move : MonoBehaviour
         hits = Physics.RaycastAll(ray);
         foreach (RaycastHit hit in hits)
         {
-            if (hit.collider.tag=="Finish")
+            if (hit.collider.tag=="Floor")
             {
                 model.transform.LookAt(new Vector3(hit.point.x,this.transform.position.y,hit.point.z));
                 break;
             }
         }
-
-
-
-        //transform.Rotate(new Vector3(/*Input.GetAxis("Mouse Y")*/0,Input.GetAxis("Mouse X") * Time.deltaTime * turnSpeed,0));
-        //gameObject.transform.GetChild(2).Rotate(new Vector3(/*Input.GetAxis("Mouse Y")*/0, Input.GetAxis("Mouse X") * Time.deltaTime * turnSpeed, 0));
     }
 
     void OnCollisionEnter(Collision col)
