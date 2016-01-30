@@ -10,7 +10,7 @@ public class Move : MonoBehaviour
     private Camera cam;
 
     private Rigidbody phys_obj;
-    private Vector3 move_velocity = new Vector3();
+    private Vector3 temp_vec = new Vector3();
 
     // Use this for initialization
     void Start ()
@@ -26,17 +26,17 @@ public class Move : MonoBehaviour
     {
         float up = Input.GetAxis("Vertical") * upSpeed;
         float side = Input.GetAxis("Horizontal") * sideSpeed;
-        move_velocity.Set(side, 0.0f, up);
-        phys_obj.velocity = move_velocity;
+        temp_vec.Set(side, 0.0f, up);
+        phys_obj.velocity = temp_vec;
 
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(ray);
+        RaycastHit[] hits = Physics.RaycastAll(ray);
         foreach (RaycastHit hit in hits)
         {
             if (hit.collider.tag=="Floor")
             {
-                model.transform.LookAt(new Vector3(hit.point.x,this.transform.position.y,hit.point.z));
+                temp_vec.Set(hit.point.x, model.transform.position.y, hit.point.z);
+                model.transform.LookAt(temp_vec);
                 break;
             }
         }
