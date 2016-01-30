@@ -29,8 +29,22 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
         Debug.Assert(model);
         cam = Camera.main;
 
+        EventManager.OnDeath += OnPlayerDeath;
+        gameObject.SetActive(true);
+
         //gun = new BulletPool(20, "Bullet");
         
+    }
+
+    void OnPlayerDeath(Death death) {
+        if (death.victim == gameObject.GetHashCode()) {
+            DieInTheGameDieInRealLife();
+        }
+    }
+
+    void DieInTheGameDieInRealLife() {
+        EventManager.OnDeath -= OnPlayerDeath;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
    // private float shoot_time_agg = float.PositiveInfinity;
@@ -65,7 +79,7 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
     {
         if (col.gameObject.tag == "Enemy")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            DieInTheGameDieInRealLife();
         }
     }
 
