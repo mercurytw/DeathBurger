@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections;
 
-public class DeathbunnyController : MonoBehaviour {
+public class ChaseController : MonoBehaviour {
 
     public float move_speed = 3.0f;
     private Rigidbody body;

@@ -1,21 +1,22 @@
-﻿using UnityEngine;
+﻿#define DEBUG_PLAYER_LOOK_VECTOR
+
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class Move : MonoBehaviour
+
+public class PlayerController : MonoBehaviour
 {
     public const float upSpeed = 5.0f;
     public const float sideSpeed = 5.0f;
-    private GameObject model;
+    public GameObject model;
     private Camera cam;
 
     private Rigidbody phys_obj;
     private Vector3 temp_vec = new Vector3();
 
-    public BulletPool gun;
-    public const float delay = 0.2f;
-    public float timer = 0.0f;
-
+    private BulletPool gun;
+    public const float rate_of_fire_seconds = 1.0f;
     // Use this for initialization
     void Start ()
     {
@@ -28,7 +29,7 @@ public class Move : MonoBehaviour
         gun = new BulletPool(20, "Bullet");
     }
 
-    private bool bShoot = true;
+    private float shoot_time_agg = float.PositiveInfinity;
 	// Update is called once per frame
 	void Update ()
     {
@@ -36,26 +37,27 @@ public class Move : MonoBehaviour
         float side = Input.GetAxis("Horizontal") * sideSpeed;
         temp_vec.Set(side, 0.0f, up);
         phys_obj.velocity = temp_vec;
-
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits;
         hits = Physics.RaycastAll(ray);
         foreach (RaycastHit hit in hits)
         {
-            if (hit.collider.tag=="Finish")
+            if (hit.collider.tag=="Floor")
             {
                 Vector3 pointVector = new Vector3(hit.point.x, model.transform.position.y, hit.point.z);
                 model.transform.LookAt(pointVector);
-                //if (timer <= Time.time)
                 break;
             }
         }
 
-        if (bShoot)
+#if DEBUG_PLAYER_LOOK_VECTOR
+        Debug.DrawRay(model.transform.position, model.transform.forward * 1.5f, Color.cyan);
+#endif
+
+        if (rate_of_fire_seconds <= (shoot_time_agg += Time.deltaTime))
         {
-            bShoot = false;
+            shoot_time_agg = 0.0f;
             gun.GetBullet(transform.position.x, transform.position.z, model.transform.rotation);
-            timer = Time.time + delay;
         }
     }
 
