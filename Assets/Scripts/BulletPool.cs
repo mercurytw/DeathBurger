@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,8 +9,8 @@ public class BulletPool
     Stack<PickleProjectile> pool = new Stack<PickleProjectile>();
     private Vector3 temp = new Vector3(-99999f, 0f, 0f);
 
-    // Use this for initialization
-    public BulletPool (int amount, string type) {
+	// Use this for initialization
+	public BulletPool (int amount, string type) {
 		for (int i = 0; i < amount; i++) {
             GameObject obj = GameObject.Instantiate((GameObject)Resources.Load(type));
             Debug.Assert(obj);
@@ -31,7 +32,7 @@ public class BulletPool
 
 	public void ReleaseBullet(PickleProjectile bullet) {
 		bullet.gameObject.SetActive (false);
-        bullet.gameObject.transform.position = temp;
-        pool.Push (bullet);
+		bullet.gameObject.transform.position = temp;
+		pool.Push (bullet);
 	}
 }
