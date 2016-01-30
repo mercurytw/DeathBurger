@@ -6,24 +6,23 @@ public class Move : MonoBehaviour
     public const float upSpeed = 5.0f;
     public const float sideSpeed = 5.0f;
 
+    private Rigidbody phys_obj;
+    private Vector3 move_velocity = new Vector3();
+
     // Use this for initialization
     void Start () {
-	
+        phys_obj = GetComponent<Rigidbody>();
+        Debug.Assert(phys_obj);
 	}
-	
+
+    
 	// Update is called once per frame
 	void Update ()
     {
-        //if (Input.GetKey(KeyCode.W))
-        //{
-
-        //}
-
-        float up = Input.GetAxis("Vertical") * upSpeed * Time.deltaTime;
-        float side = Input.GetAxis("Horizontal") * sideSpeed * Time.deltaTime;
-
-        transform.Translate(side,0,up);
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        float up = Input.GetAxis("Vertical") * upSpeed;
+        float side = Input.GetAxis("Horizontal") * sideSpeed;
+        move_velocity.Set(side, 0.0f, up);
+        phys_obj.velocity = move_velocity;
     }
 
 }
