@@ -19,7 +19,9 @@ public class DeathbunnyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        move_vector.Set(player.transform.position.x, 0.0f, player.transform.position.z);
+        move_vector.Set(player.transform.position.x, 
+                        transform.position.y, // intentionally OUR transform, NOT player transform!
+                        player.transform.position.z);
         transform.LookAt(move_vector);
         move_vector.Set(transform.forward.x * move_speed, 0.0f, transform.forward.z * move_speed);
         body.velocity = move_vector;
