@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
     private Rigidbody phys_obj;
     private Vector3 temp_vec = new Vector3();
 
-    private BulletPool gun;
-    public const float rate_of_fire_seconds = 1.0f;
+   // private BulletPool gun;
+    //public const float rate_of_fire_seconds = 1.0f;
     public const Team.TeamEnum team = Team.TeamEnum.kPlayer;
 
     public Team.TeamEnum getAlignment() { return Team.TeamEnum.kPlayer; }
@@ -29,11 +29,11 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
         Debug.Assert(model);
         cam = Camera.main;
 
-        gun = new BulletPool(20, "Bullet");
+        //gun = new BulletPool(20, "Bullet");
         
     }
 
-    private float shoot_time_agg = float.PositiveInfinity;
+   // private float shoot_time_agg = float.PositiveInfinity;
 	// Update is called once per frame
 	void Update ()
     {
@@ -58,11 +58,7 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
         Debug.DrawRay(model.transform.position, model.transform.forward * 1.5f, Color.cyan);
 #endif
 
-        if (rate_of_fire_seconds <= (shoot_time_agg += Time.deltaTime))
-        {
-            shoot_time_agg = 0.0f;
-            gun.GetBullet(transform.position.x, transform.position.z, model.transform.rotation);
-        }
+        
     }
 
     void OnCollisionEnter(Collision col)

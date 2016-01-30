@@ -21,11 +21,11 @@ public class BulletPool
 		}
 	}
 
-	public PickleProjectile GetBullet(float x, float z, Quaternion heading) {
+	public PickleProjectile GetBullet(float x, float z, Quaternion heading, Team.TeamEnum alignment = Team.TeamEnum.kEnemy) {
 
         PickleProjectile bullet = pool.Pop();
         Debug.Assert(null != bullet);
-		bullet.initialize (x, z, heading, this);
+		bullet.initialize (x, z, heading, this, alignment);
         bullet.gameObject.SetActive(true);
         return bullet;
 	}

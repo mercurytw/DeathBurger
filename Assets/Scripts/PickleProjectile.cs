@@ -39,7 +39,8 @@ public class PickleProjectile : MonoBehaviour, Team.ITeamAligned
         if ("Terrain" == other.gameObject.tag) 
         {
             deinitialize();
-        } else if ("Enemy" == other.gameObject.tag) 
+        } else if ((Team.TeamEnum.kPlayer == alignment && "Enemy" == other.gameObject.tag) &&
+                   (Team.TeamEnum.kEnemy == alignment && "Player" == other.gameObject.tag))
         {
             EventManager.DispatchEvent(new Damage(damage, alignment, other.gameObject.GetHashCode()));
             deinitialize();
