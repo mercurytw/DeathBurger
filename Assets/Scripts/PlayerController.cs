@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 temp_vec = new Vector3();
 
     private BulletPool gun;
-    public const float rate_of_fire_seconds = 1.0f;
+    public const float rate_of_fire_seconds = 0.5f;
     // Use this for initialization
     void Start ()
     {
