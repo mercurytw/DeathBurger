@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PickleProjectile : MonoBehaviour
+public class PickleProjectile : MonoBehaviour, Team.ITeamAligned
 {
 	public int damage = 1;
 	public string type = "Pickles";
@@ -10,11 +10,14 @@ public class PickleProjectile : MonoBehaviour
 	private BulletPool bPool;
     private Vector3 temp = new Vector3();
     private Vector3 velocity = new Vector3();
+    private Team.TeamEnum alignment = Team.TeamEnum.kUnaligned;
 
+    public Team.TeamEnum getAlignment() { return alignment; }
 	// Use this for initialization
-	public void initialize(float x, float z, Quaternion nheading, BulletPool pool)
+	public void initialize(float x, float z, Quaternion nheading, BulletPool pool, Team.TeamEnum alignment = Team.TeamEnum.kEnemy)
     {
 		bPool = pool;
+        this.alignment = alignment;
 
         temp.Set(x, bullet_height, z);
         gameObject.transform.position = temp;
@@ -33,9 +36,12 @@ public class PickleProjectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if ("Enemy" == other.gameObject.tag ||
-            "Terrain" == other.gameObject.tag)
+        if ("Terrain" == other.gameObject.tag) 
         {
+            deinitialize();
+        } else if ("Enemy" == other.gameObject.tag) 
+        {
+            EventManager.DispatchEvent(new Damage(damage, alignment, other.gameObject.GetHashCode()));
             deinitialize();
         }
     }
