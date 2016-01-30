@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, Team.ITeamAligned
 {
     public const float upSpeed = 5.0f;
     public const float sideSpeed = 5.0f;
@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     private BulletPool gun;
     public const float rate_of_fire_seconds = 0.5f;
+    public const Team.TeamEnum team = Team.TeamEnum.kPlayer;
+
+    public Team.TeamEnum getAlignment() { return Team.TeamEnum.kPlayer; }
     // Use this for initialization
     void Start ()
     {
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
 
         gun = new BulletPool(20, "Bullet");
+        
     }
 
     private float shoot_time_agg = float.PositiveInfinity;
