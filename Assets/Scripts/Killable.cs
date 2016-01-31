@@ -18,7 +18,7 @@ public class Killable : MonoBehaviour {
         if (0 < (health -= dmg.amount))
             return;
 
-        EventManager.DispatchEvent(new Death(gameObject.GetHashCode()));
+        EventManager.DispatchEvent(new Death(gameObject.GetHashCode(), gameObject));
     }
 
     void Update() {
