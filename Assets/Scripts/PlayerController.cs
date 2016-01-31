@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
     bool isDead = false;
 
     //public Texture2D arrow;
-    public Image arrow;
+    private GameObject canvas;
+    private Image arrow;
 
     // private BulletPool gun;
     //public const float rate_of_fire_seconds = 1.0f;
@@ -30,6 +31,11 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
     void Start()
     {
         Cursor.visible = false;
+        canvas = GameObject.Find("Canvas");
+        Debug.Assert(canvas);
+        //Component[] bob=canvas.GetComponentsInChildren<Component>();
+        arrow = canvas.GetComponentInChildren<Image>();
+        Debug.Assert(arrow);
         //Cursor.SetCursor(arrow, Vector2.zero, CursorMode.Auto);
         phys_obj = GetComponent<Rigidbody>();
         Debug.Assert(phys_obj);
@@ -80,7 +86,6 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
         arrow.transform.position = pos;
 
         Vector3 world_pos = Camera.main.ScreenToWorldPoint(pos);
-        print(world_pos);
         Vector3 center = (/*model.*/transform.position + new Vector3(0, 0, offset));
         Vector3 direction = world_pos - center;
 
