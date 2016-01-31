@@ -14,15 +14,18 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
 
     private Rigidbody phys_obj;
     private Vector3 temp_vec = new Vector3();
+    bool isDead = false;
 
    // private BulletPool gun;
     //public const float rate_of_fire_seconds = 1.0f;
     public const Team.TeamEnum team = Team.TeamEnum.kPlayer;
+    public Refcounter refctr;
 
     public Team.TeamEnum getAlignment() { return Team.TeamEnum.kPlayer; }
     // Use this for initialization
     void Start ()
     {
+       
         phys_obj = GetComponent<Rigidbody>();
         Debug.Assert(phys_obj);
         model = gameObject.transform.GetChild(2).gameObject;
@@ -36,6 +39,11 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
         
     }
 
+    void OnDestroy() {
+        if (!isDead)
+            EventManager.OnDeath -= OnPlayerDeath;
+    }
+
     void OnPlayerDeath(Death death) {
         if (death.victim == gameObject.GetHashCode()) {
             DieInTheGameDieInRealLife();
@@ -44,6 +52,7 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
 
     void DieInTheGameDieInRealLife() {
         EventManager.OnDeath -= OnPlayerDeath;
+        isDead = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

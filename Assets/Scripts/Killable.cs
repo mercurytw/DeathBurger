@@ -23,13 +23,13 @@ public class Killable : MonoBehaviour {
         if (0 < (health -= dmg.amount))
             return;
 
-        EventManager.DispatchEvent(new Death(gameObject.GetHashCode()));
+        EventManager.DispatchEvent(new Death(gameObject.GetHashCode(), gameObject));
         die_later = true;
     }
 
     void Update() {
         if (die_later) {
-            gameObject.SetActive(false);
+                gameObject.SetActive(false);
         }
     }
 
