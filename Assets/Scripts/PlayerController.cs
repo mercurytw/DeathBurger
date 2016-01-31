@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
    // private BulletPool gun;
     //public const float rate_of_fire_seconds = 1.0f;
     public const Team.TeamEnum team = Team.TeamEnum.kPlayer;
-    public Refcounter refctr;
 
     public Team.TeamEnum getAlignment() { return Team.TeamEnum.kPlayer; }
     // Use this for initialization
