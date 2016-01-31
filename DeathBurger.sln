@@ -1,3 +1,37 @@
+<<<<<<< HEAD
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathBurger.CSharp.Plugins", "DeathBurger.CSharp.Plugins.csproj", "{07A4B82E-5BA1-AC80-E2A6-D522C7EBBF21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathBurger.CSharp", "DeathBurger.CSharp.csproj", "{DB27CAD6-B1CB-2E72-60E6-E909DB911283}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathBurger.CSharp.Editor", "DeathBurger.CSharp.Editor.csproj", "{D31BD6EC-9C96-989F-E311-B190D08C8246}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07A4B82E-5BA1-AC80-E2A6-D522C7EBBF21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A4B82E-5BA1-AC80-E2A6-D522C7EBBF21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A4B82E-5BA1-AC80-E2A6-D522C7EBBF21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A4B82E-5BA1-AC80-E2A6-D522C7EBBF21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB27CAD6-B1CB-2E72-60E6-E909DB911283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB27CAD6-B1CB-2E72-60E6-E909DB911283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB27CAD6-B1CB-2E72-60E6-E909DB911283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB27CAD6-B1CB-2E72-60E6-E909DB911283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31BD6EC-9C96-989F-E311-B190D08C8246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31BD6EC-9C96-989F-E311-B190D08C8246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31BD6EC-9C96-989F-E311-B190D08C8246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31BD6EC-9C96-989F-E311-B190D08C8246}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
+=======
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
@@ -24,3 +58,4 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
+>>>>>>> 5c56e930c5890da6b4ba0893e33f3073427293cc
