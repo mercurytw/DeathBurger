@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
@@ -30,3 +31,31 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
+=======
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deathburger.CSharp", "Deathburger.CSharp.csproj", "{C363D269-B145-AAE8-0AF6-8CC0C42606DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deathburger.CSharp.Editor", "Deathburger.CSharp.Editor.csproj", "{32E35233-EC83-BBA3-46BD-287DC7937255}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C363D269-B145-AAE8-0AF6-8CC0C42606DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C363D269-B145-AAE8-0AF6-8CC0C42606DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C363D269-B145-AAE8-0AF6-8CC0C42606DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C363D269-B145-AAE8-0AF6-8CC0C42606DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E35233-EC83-BBA3-46BD-287DC7937255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E35233-EC83-BBA3-46BD-287DC7937255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E35233-EC83-BBA3-46BD-287DC7937255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E35233-EC83-BBA3-46BD-287DC7937255}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
+>>>>>>> 5c56e930c5890da6b4ba0893e33f3073427293cc
