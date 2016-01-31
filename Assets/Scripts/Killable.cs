@@ -24,7 +24,7 @@ public class Killable : MonoBehaviour {
 
     void Update() {
         if (die_later) {
-            gameObject.SetActive(false);
+                gameObject.SetActive(false);
         }
     }
 
