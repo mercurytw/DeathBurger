@@ -7,8 +7,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour, Team.ITeamAligned
 {
-    public const float upSpeed = 5.0f;
-    public const float sideSpeed = 5.0f;
+    public float move_speed = 5.0f;
     public GameObject model;
     private Camera cam;
 
@@ -59,9 +58,11 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
 	// Update is called once per frame
 	void Update ()
     {
-        float up = Input.GetAxis("Vertical") * upSpeed;
-        float side = Input.GetAxis("Horizontal") * sideSpeed;
+        float up = Input.GetAxis("Vertical");
+        float side = Input.GetAxis("Horizontal");
         temp_vec.Set(side, 0.0f, up);
+        temp_vec.Normalize();
+        temp_vec = move_speed * temp_vec;
         phys_obj.velocity = temp_vec;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits;

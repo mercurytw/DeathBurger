@@ -7,6 +7,8 @@ public class EnterArena : MonoBehaviour {
     public Behaviour[] to_activate;
     private bool is_descending = false;
     private float target_height = 0;
+    private bool was_nonkinematic = false;
+    private Rigidbody rb = null;
     public enum LogicType
     {
         bunny,
@@ -17,13 +19,17 @@ public class EnterArena : MonoBehaviour {
 	void Start () {
         gameObject.transform.LookAt(new Vector3(0.0f, gameObject.transform.position.y, 0.0f));
         tmp_vec = movespeed * new Vector3(0f, 0f, 1f);
-        
+        rb = gameObject.GetComponent<Rigidbody>();
+        if (!rb)
+            return;
+        was_nonkinematic = !rb.isKinematic;
+        rb.isKinematic = true;
 	}
 
     // hacky bulllshit
     private float getHeightForTarget() {
         if (LogicType.bunny == logic) {
-            return 0.3f; 
+            return 0.321f; 
         }
         return 3f;
     }
@@ -38,7 +44,13 @@ public class EnterArena : MonoBehaviour {
             enabled = false;
             foreach (Behaviour be in to_activate)
                 be.enabled = true;
-            
+            if (null != rb) {
+                if (was_nonkinematic)
+                    rb.isKinematic = false;
+                RigidbodyConstraints consts = rb.constraints;
+                consts |= RigidbodyConstraints.FreezePositionY;
+                rb.constraints = consts;
+            }
         }
 	}
 
