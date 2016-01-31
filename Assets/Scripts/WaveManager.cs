@@ -5,7 +5,7 @@ using System.Collections;
 public class WaveManager : MonoBehaviour {
     private int num_of_enemies = 0;
     private string[] waves = {"wave1", "wave2"};
-    private int curr_wave_idx = 0;
+    private int curr_wave_idx = 2;
 
     void Start() {
         seeetup();
