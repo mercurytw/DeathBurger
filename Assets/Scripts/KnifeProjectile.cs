@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PickleProjectile : MonoBehaviour, Team.ITeamAligned, IProjectile
+public class KnifeProjectile : MonoBehaviour, Team.ITeamAligned, IProjectile
 {
 	public int damage = 1;
 	public string type = "Pickles";
     public float bullet_height = 0.5f;
-    public float bullet_speed = 1.0f;
+    public float bullet_speed = 0.1f;
 	private BulletPool bPool;
     private Vector3 temp = new Vector3();
     private Vector3 velocity = new Vector3();
