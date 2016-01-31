@@ -5,10 +5,6 @@ using System.IO;
 
 public class GenerateJSON : Editor {
 
-	public string filename;
-	public GameObject[] gameObjects;
-	public int[] intervals;
-
 	// Use this for initialization
 	void Start () {
 	
@@ -19,7 +15,7 @@ public class GenerateJSON : Editor {
 		
 	}
 
-	string jsonify()
+	static string jsonify(GameObject[] gameObjects,int[] intervals)
 	{
 		JSONObject json = new JSONObject (JSONObject.Type.OBJECT);
 
@@ -30,8 +26,8 @@ public class GenerateJSON : Editor {
 
 		JSONObject jintervals = new JSONObject (JSONObject.Type.ARRAY);
 		json.AddField ("intervals",jintervals);
-		foreach(GameObject go in gameObjects)
-			jintervals.Add (go);
+		foreach(int i in intervals)
+			jintervals.Add (i);
 
 		return json.Print ();
 	}
@@ -39,8 +35,11 @@ public class GenerateJSON : Editor {
 
 
 	[MenuItem ("CONTEXT/GenerateJSONPuppet/WriteToFile")]
-	void WriteToFile()
+	static void WriteToFile()
 	{
-		File.WriteAllText (filename, jsonify());
+		GenerateJSONPuppet jp = Selection.activeGameObject.GetComponent<GenerateJSONPuppet> ();
+
+
+		File.WriteAllText (jp.filename,jsonify(jp.gameObjects,jp.intervals));
 	}
 }
