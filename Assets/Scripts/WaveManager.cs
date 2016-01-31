@@ -12,7 +12,12 @@ public class WaveManager : MonoBehaviour {
     }
 
     void seeetup() {
-        num_of_enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        num_of_enemies = 0;
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject ob in objs) {
+            if (ob.activeSelf)
+                ++num_of_enemies;
+        }
         Debug.Log(num_of_enemies);
         EventManager.OnDeath += OnDeath;
         
