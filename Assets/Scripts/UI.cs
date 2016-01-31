@@ -6,7 +6,7 @@ public class UI : MonoBehaviour {
 
     public Text health = null;
     float var = -1.0f;
-    bool ready = false;
+    // bool ready = false;
     Killable k;
 
     void Start () {
