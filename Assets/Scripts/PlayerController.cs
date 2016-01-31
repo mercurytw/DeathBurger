@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
        
         phys_obj = GetComponent<Rigidbody>();
         Debug.Assert(phys_obj);
-        model = gameObject.transform.GetChild(2).gameObject;
+        model = gameObject.transform.GetChild(1).gameObject;
         Debug.Assert(model);
         cam = Camera.main;
 

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Shooter : MonoBehaviour {
 
-    public const float rate_of_fire_seconds = 1.0f;
+    public float rate_of_fire_seconds;
     public Team.TeamEnum team = Team.TeamEnum.kEnemy;
     public Transform bullet_heading;
     public string bullet_class;
