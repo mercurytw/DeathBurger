@@ -3,7 +3,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
 
 
 public class PlayerController : MonoBehaviour, Team.ITeamAligned
@@ -75,18 +74,6 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
         }
         Vector3 pos = Input.mousePosition;
         arrow.transform.position = pos;
-        /*Vector3 origin = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
-        float angle;
-        bool left = pos.x < origin.x;
-        bool top = pos.y < origin.y;
-        if (left && top)
-        {
-            float xDiff = origin.x - pos.x;
-            float yDiff = origin.y - pos.y;
-            angle=(float)System.Math.Atan2(yDiff, xDiff) * (float)(180 / System.Math.PI);
-            print(angle);
-            arrow.transform.eulerAngles = new Vector3(0f, 0f, -angle);
-        }*/
 
         Vector3 world_pos = Camera.main.ScreenToWorldPoint(pos);
         Vector3 direction = world_pos - (model.transform.position + new Vector3(0,0,-2));
