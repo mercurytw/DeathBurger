@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Killable : MonoBehaviour {
     public float health = 1.0f;
@@ -12,6 +13,10 @@ public class Killable : MonoBehaviour {
 	}
 	
 	void TakeDamage(Damage dmg) {
+        //test
+        //SceneManager.LoadScene("Main", LoadSceneMode.Single);
+        //return;
+
         if (dmg.team == team)
             return;
 
@@ -31,4 +36,9 @@ public class Killable : MonoBehaviour {
     void OnDisable() {
         EventManager.OnInflictDamage -= TakeDamage;
     }
+
+    //public float GetHealth()
+    //{
+    //    return health;
+    //}
 }
