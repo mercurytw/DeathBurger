@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class BulletPool
 {
     // public string type = "Pickles";
-    Stack<PickleProjectile> pool = new Stack<PickleProjectile>();
+    Stack<IProjectile> pool = new Stack<IProjectile>();
     private Vector3 temp = new Vector3(-99999f, 0f, 0f);
 
 	// Use this for initialization
@@ -15,24 +15,24 @@ public class BulletPool
             GameObject obj = GameObject.Instantiate((GameObject)Resources.Load(type));
             Debug.Assert(obj);
             obj.transform.position = temp;
-            PickleProjectile behavior = obj.GetComponent<PickleProjectile>();
-            Debug.Assert(behavior);
+            IProjectile behavior = obj.GetComponent<IProjectile>();
+            Debug.Assert(behavior != null);
             pool.Push(behavior);
 		}
 	}
 
-	public PickleProjectile GetBullet(float x, float z, Quaternion heading, Team.TeamEnum alignment = Team.TeamEnum.kEnemy) {
+	public IProjectile GetBullet(float x, float z, Quaternion heading, Team.TeamEnum alignment = Team.TeamEnum.kEnemy) {
 
-        PickleProjectile bullet = pool.Pop();
+        IProjectile bullet = pool.Pop();
         Debug.Assert(null != bullet);
 		bullet.initialize (x, z, heading, this, alignment);
-        bullet.gameObject.SetActive(true);
+        bullet.getGameObject().SetActive(true);
         return bullet;
 	}
 
-	public void ReleaseBullet(PickleProjectile bullet) {
-		bullet.gameObject.SetActive (false);
-		bullet.gameObject.transform.position = temp;
+	public void ReleaseBullet(IProjectile bullet) {
+		bullet.getGameObject().SetActive (false);
+		bullet.getGameObject().transform.position = temp;
 		pool.Push (bullet);
 	}
 }

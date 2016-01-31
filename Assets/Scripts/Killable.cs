@@ -19,6 +19,7 @@ public class Killable : MonoBehaviour {
             return;
 
         EventManager.DispatchEvent(new Death(gameObject.GetHashCode()));
+        die_later = true;
     }
 
     void Update() {
