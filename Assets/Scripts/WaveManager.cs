@@ -13,6 +13,7 @@ public class WaveManager : MonoBehaviour {
 
     void seeetup() {
         num_of_enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        Debug.Log(num_of_enemies);
         EventManager.OnDeath += OnDeath;
         
     }
@@ -30,8 +31,9 @@ public class WaveManager : MonoBehaviour {
     void OnDeath(Death death) {
         if ("Enemy" != death.victim_obj.tag)
             return;
-       // Debug.Log("Ded");
-        if (0 <= --num_of_enemies) {
+        // Debug.Log("Ded");
+        Debug.Log(num_of_enemies);
+        if (0 >= --num_of_enemies) {
             level_to_load = (int)((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
         }
     }

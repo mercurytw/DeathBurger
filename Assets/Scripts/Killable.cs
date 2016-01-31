@@ -17,12 +17,14 @@ public class Killable : MonoBehaviour {
         //SceneManager.LoadScene("Main", LoadSceneMode.Single);
         //return;
 
-        if (dmg.team == team)
+        if (dmg.team == team || 
+            dmg.recipient_hash != gameObject.GetHashCode())
             return;
 
         if (0 < (health -= dmg.amount))
             return;
 
+        Debug.Log("Gonna die");
         EventManager.DispatchEvent(new Death(gameObject.GetHashCode(), gameObject));
         die_later = true;
     }
