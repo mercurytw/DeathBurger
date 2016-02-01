@@ -69,15 +69,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BulletPool.cs" />
-    <Compile Include="Assets\Scripts\DeathbunnyController.cs" />
-    <Compile Include="Assets\Scripts\IBullet.cs" />
+    <Compile Include="Assets\Scripts\ChaseController.cs" />
+    <Compile Include="Assets\Scripts\ChaseNavMesh.cs" />
+    <Compile Include="Assets\Scripts\Damage.cs" />
+    <Compile Include="Assets\Scripts\Death.cs" />
+    <Compile Include="Assets\Scripts\DoNotDestroy.cs" />
+    <Compile Include="Assets\Scripts\EnterArena.cs" />
+    <Compile Include="Assets\Scripts\EventManager.cs" />
+    <Compile Include="Assets\Scripts\GenerateJSONPuppet.cs" />
+    <Compile Include="Assets\Scripts\IBurgerEvent.cs" />
     <Compile Include="Assets\Scripts\IEnemy.cs" />
+    <Compile Include="Assets\Scripts\IProjectile.cs" />
     <Compile Include="Assets\Scripts\JSON\JSONObject.cs" />
     <Compile Include="Assets\Scripts\JSON\JSONTemplates.cs" />
     <Compile Include="Assets\Scripts\JSON\VectorTemplates.cs" />
-    <Compile Include="Assets\Scripts\Move.cs" />
+    <Compile Include="Assets\Scripts\Killable.cs" />
+    <Compile Include="Assets\Scripts\KnifeProjectile.cs" />
     <Compile Include="Assets\Scripts\Opening Scene\LightMover.cs" />
     <Compile Include="Assets\Scripts\Opening Scene\TextRotator.cs" />
+    <Compile Include="Assets\Scripts\OpeningSeq.cs" />
+    <Compile Include="Assets\Scripts\PickleProjectile.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Shooter.cs" />
+    <Compile Include="Assets\Scripts\Team.cs" />
+    <Compile Include="Assets\Scripts\UI.cs" />
     <Compile Include="Assets\Scripts\Wave.cs" />
     <Compile Include="Assets\Scripts\WaveFactory.cs" />
     <Compile Include="Assets\Scripts\WaveManager.cs" />
@@ -85,10 +100,6 @@
   <ItemGroup>
     <None Include="Assets\Scripts\JSON\readme.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-    <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
-    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
-    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
-    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
