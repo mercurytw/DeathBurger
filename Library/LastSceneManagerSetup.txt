@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Opening Scene.unity
+- path: Assets/Mahaela.unity
   isLoaded: 1
   isActive: 1
