@@ -16,17 +16,26 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
     bool isDead = false;
 
     //public Texture2D arrow;
-    public Image arrow;
+    private GameObject canvas;
+    private Image arrow;
 
     // private BulletPool gun;
     //public const float rate_of_fire_seconds = 1.0f;
     public const Team.TeamEnum team = Team.TeamEnum.kPlayer;
 
     public Team.TeamEnum getAlignment() { return Team.TeamEnum.kPlayer; }
+
+    float offset;
+
     // Use this for initialization
     void Start()
     {
         Cursor.visible = false;
+        canvas = GameObject.Find("Canvas");
+        Debug.Assert(canvas);
+        //Component[] bob=canvas.GetComponentsInChildren<Component>();
+        arrow = canvas.GetComponentInChildren<Image>();
+        Debug.Assert(arrow);
         //Cursor.SetCursor(arrow, Vector2.zero, CursorMode.Auto);
         phys_obj = GetComponent<Rigidbody>();
         Debug.Assert(phys_obj);
@@ -37,6 +46,7 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
         EventManager.OnDeath += OnPlayerDeath;
         gameObject.SetActive(true);
 
+        offset = cam.transform.position.z;
         //gun = new BulletPool(20, "Bullet");
 
     }
@@ -76,9 +86,10 @@ public class PlayerController : MonoBehaviour, Team.ITeamAligned
         arrow.transform.position = pos;
 
         Vector3 world_pos = Camera.main.ScreenToWorldPoint(pos);
-        Vector3 direction = world_pos - (model.transform.position + new Vector3(0,0,-2));
+        Vector3 center = (/*model.*/transform.position + new Vector3(0, 0, offset));
+        Vector3 direction = world_pos - center;
 
-        Quaternion rot = Quaternion.LookRotation(direction, Vector3.up);
+        Quaternion rot = Quaternion.LookRotation(direction, new Vector3(center.x,1,center.z));
 
         arrow.transform.eulerAngles = new Vector3(0, 0, -rot.eulerAngles.y);
 

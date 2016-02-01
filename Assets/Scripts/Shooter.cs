@@ -20,6 +20,8 @@ public class Shooter : MonoBehaviour {
 	void Update () {
         if (rate_of_fire_seconds <= (shoot_time_agg += Time.deltaTime)) {
             shoot_time_agg = 0.0f;
+            if (gameObject.tag != "Player" && gameObject.transform.position.y > 0.8)
+                return;
             gun.GetBullet(bullet_heading.position.x, bullet_heading.position.z, bullet_heading.rotation, team);
         }
     }

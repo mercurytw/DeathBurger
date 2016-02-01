@@ -70,8 +70,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BulletPool.cs" />
     <Compile Include="Assets\Scripts\ChaseController.cs" />
+    <Compile Include="Assets\Scripts\ChaseNavMesh.cs" />
     <Compile Include="Assets\Scripts\Damage.cs" />
     <Compile Include="Assets\Scripts\Death.cs" />
+    <Compile Include="Assets\Scripts\DoNotDestroy.cs" />
     <Compile Include="Assets\Scripts\EnterArena.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\GenerateJSONPuppet.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Assets\Scripts\KnifeProjectile.cs" />
     <Compile Include="Assets\Scripts\Opening Scene\LightMover.cs" />
     <Compile Include="Assets\Scripts\Opening Scene\TextRotator.cs" />
+    <Compile Include="Assets\Scripts\OpeningSeq.cs" />
     <Compile Include="Assets\Scripts\PickleProjectile.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Shooter.cs" />
